@@ -20,18 +20,34 @@ window.onload = function() {
             }, 1000);
         };
     }
+    
+    // Iniciar o reloginho clássico
+    startRetroClock();
 };
 
-// 2. Efeito de rastro no mouse (Mouse Trail) muito famoso na época
+// 2. Relógio retrô no rodapé
+function startRetroClock() {
+    var clockSpan = document.getElementById('retro-clock');
+    if (!clockSpan) return;
+    
+    setInterval(function() {
+        var now = new Date();
+        var dateStr = now.toLocaleDateString('pt-BR');
+        var timeStr = now.toLocaleTimeString('pt-BR');
+        clockSpan.innerHTML = "Hoje é " + dateStr + " - " + timeStr + " [HORA LOCAL]";
+    }, 1000);
+}
+
+// 3. Efeito de rastro no mouse (Mouse Trail) muito famoso na época
 var dots = [];
 var mouse = {
-  x: 0,
-  y: 0
+  x: -100, // Começa fora da tela para não bugar no canto 0,0
+  y: -100
 };
 
 var Dot = function() {
-  this.x = 0;
-  this.y = 0;
+  this.x = -100;
+  this.y = -100;
   this.node = (function(){
     var n = document.createElement("div");
     n.className = "mouse-trail";
@@ -77,7 +93,7 @@ function animate() {
 
 animate();
 
-// 3. Proibir botão direito (proteção contra roubo de código super segura e nostálgica)
+// 4. Proibir botão direito (proteção contra roubo de código super segura e nostálgica)
 document.addEventListener('contextmenu', event => {
     event.preventDefault();
     alert("Código protegido por Copyright ©️ 2008! Não copie minha página!!!");

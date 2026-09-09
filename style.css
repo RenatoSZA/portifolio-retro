@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 10px;
     cursor: url('https://web.archive.org/web/20090829141012/http://geocities.com/dianamarcos/cruz.cur'), auto;
+    overflow-x: hidden; /* Fix: Evita barras de rolagem horizontais causadas pelo mouse trail */
 }
 
 h1, h2, h3 {
@@ -133,4 +134,25 @@ ul {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
+}
+
+/* Responsividade Básica (Porque mesmo os anos 2000 merecem ser vistos no celular) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    .top-marquee {
+        font-size: 20px;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    th {
+        text-align: center;
+    }
+    td {
+        text-align: center;
+        border-bottom: 2px dashed #0000FF;
+    }
 }
